@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<ruleset>
+	<arg name="parallel" value="4"/>
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="nsp"/>
+
+	<file>.</file>
+
+	<exclude-pattern>/.idea/*</exclude-pattern>
+	<exclude-pattern>/.data/*</exclude-pattern>
+	<exclude-pattern>/.git/*</exclude-pattern>
+	<exclude-pattern>/.svn/*</exclude-pattern>
+	<exclude-pattern>/dist/*</exclude-pattern>
+	<exclude-pattern>/static/*</exclude-pattern>
+	<exclude-pattern>/tests/*</exclude-pattern>
+	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/dist/*</exclude-pattern>
+	<exclude-pattern>/deploy/*</exclude-pattern>
+
+	<config name="minimum_supported_wp_version" value="4.9"/>
+
+	<rule ref="WordPress">
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName.InterpolatedVariableNotSnakeCase"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+		<exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
+		<!--        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.ArrayItemNoNewLine"/>-->
+		<!--        <exclude name="WordPress.Arrays.ArrayDeclarationSpacing.NoSpaceAfterArrayOpener"/>-->
+		<!--        <exclude name="WordPress.Arrays.CommaAfterArrayItem.NoSpaceAfterComma"/>-->
+		<!--        <exclude name="WordPress.Arrays.ArrayKeySpacingRestrictions.NoSpacesAroundArrayKeys"/>-->
+		<!--        <exclude name="WordPress.Arrays.CommaAfterArrayItem.SpaceBeforeComma"/>-->
+		<!--        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed"/>-->
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<exclude name="Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace"/>
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/>
+		<exclude name="Squiz.Commenting.ClassComment.Missing"/>
+	</rule>
+	<rule ref="WordPress.Security.NonceVerification">
+		<properties>
+			<property name="customNonceVerificationFunctions" type="array" value="wpnrent_verify_nonce"/>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false" />
+		</properties>
+	</rule>
+	<rule ref="Squiz.Commenting.FunctionComment">
+		<properties>
+			<property name="skipIfInheritdoc" value="true"/>
+		</properties>
+	</rule>
+
+	<!-- Run against the PHPCompatibility ruleset -->
+	<rule ref="PHPCompatibility"/>
+	<config name="testVersion" value="5.6-"/>
+
+</ruleset>
